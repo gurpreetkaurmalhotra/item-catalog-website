@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+  <style>
+  .iconbox-icon {
+    min-width:150px !important;
+    min-height:150px !important;
+    max-height:50px !important;
+    max-width:150 !important;
+  }
+  </style>
+</head>
+
+<div class="panel col-md-10 panel-danger" style="margin-top:50px;margin-left:8%; margin-right:8%">
+      <div class="row text-center panel-heading">
+        <img src="{{restaurant.picture}}" class="text-center iconbox-icon" alt="{{restaurant.name}}"><br>
+        <h1>{{ restaurant.name }} </h1>
+        <a href='{{url_for('restaurantMenuJSON', restaurant_id = restaurant.id) }}' class="btn btn-default pull-right"> View JSON </a>
+      </div>
+      <div class="panel-body">
+        {% for i in items %}
+        <center>
+          <div class="col-md-3 col-md-offset-2" style="padding-top:10px;margin-bottom:25px; margin-top:25px;height:150px">
+          <div>
+            <h4>{{i.name}}</h4>
+          </div>
+          <br>
+          Price: {{i.price}}
+          <br><br>
+          <div>
+            <a href='{{url_for('Viewmenu', restaurant_id = restaurant.id, menu_id = i.id) }}' id="btn1" class="btn btn-default"> View </a>
+          </div>
+          </div>
+        {% endfor %}
+      </div>
+</div>
+        </br>
+        </br>
+{% endblock %}

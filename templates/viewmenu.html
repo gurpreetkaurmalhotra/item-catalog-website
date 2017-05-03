@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+          <div class="col-md-6 panel panel-danger" style="margin-top: 80px; margin-right: 25%; margin-left: 25%">
+           <div class="row text-center panel-heading"><h3>{{item.name}}</h3><br>
+             <a href='{{url_for('menuItemJSON', restaurant_id = restaurant_id, menu_id=menu_id) }}' class="btn btn-default pull-right"> View JSON </a>
+           </div>
+           <div class="panel-body">
+          <center>
+
+
+<h4> Description: {{item.description}} </h4><br>
+<h4> Price: {{item.price}} </h4>
+</center>
+</div>
+</div>
+{% endblock %}
