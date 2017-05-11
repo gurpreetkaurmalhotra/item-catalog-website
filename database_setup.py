@@ -23,7 +23,6 @@ class Restaurant(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
     picture = Column(String(250))
-    restaurant = relationship(Restaurant, backref=backref('menu_item', cascade='all,delete'))
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
     
@@ -45,7 +44,7 @@ class MenuItem(Base):
     price = Column(String(8))
     course = Column(String(250))
     restaurant_id = Column(Integer, ForeignKey('restaurant.id'))
-    restaurant = relationship(Restaurant, single_parent=True, cascade="all, delete-orphan")
+    restaurant = relationship(Restaurant, backref=backref('menu_item', cascade='all,delete'))
     user_id = Column(Integer, ForeignKey('user.id'))
     user = relationship(User)
 
